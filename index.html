@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Um pequeno projeto que calcula o desconto do inss sobre a renda bruta">
+	<title>Calculadora - INSS</title>
+	<link rel="stylesheet" type="text/css" href="./Style/style.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<section class="parte-acima">
+			<h1>CALCULE O DESCONTO DO INSS</h1>
+			<div class="area-input">
+				<label>R$</label>
+				<input type="number" placeholder="Insira o salário bruto" id="salario" min="0">
+			</div>
+		<button id="botao" onclick="imprimirElementos()">calcular</button>
+		</section>
+		<section class="parte-baixo">
+			<div class="resultados">
+			</div>
+		</section>
+	</main>
+	<script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
