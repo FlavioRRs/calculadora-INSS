@@ -10,25 +10,24 @@ function calcularDescontoINSS (salario) {
     terAliquota = 0.12,
     quaAliquota = 0.14;
 
-  if (salario <= primFaixa && salario > 0) {
-    desconto_total = salario * primAliquota;
-    return desconto_total;
+  if (salario <= primFaixa && salario >= 0) {
+    return  salario * primAliquota;
   }
+
   if (salario <= segFaixa && salario > 0) {
-    desconto_total = calcularDescontoINSS(primFaixa) + (salario - primFaixa) * segAliquota;
-    return desconto_total;
+    return calcularDescontoINSS(primFaixa) + (salario - primFaixa) * segAliquota;
   }
+
   if (salario <= terFaixa && salario > 0) {
-    desconto_total = calcularDescontoINSS(segFaixa) + (salario - segFaixa) * terAliquota;
-    return desconto_total;
+    return  calcularDescontoINSS(segFaixa) + (salario - segFaixa) * terAliquota;
   }
+
   if (salario <= quaFaixa && salario > 0) {
-    desconto_total = calcularDescontoINSS(terFaixa) + (salario - terFaixa) * quaAliquota;
-    return desconto_total;
+    return  calcularDescontoINSS(terFaixa) + (salario - terFaixa) * quaAliquota;
   }
+  
   if (salario > quaFaixa) {
-    desconto_total = calcularDescontoINSS(quaFaixa);
-    return desconto_total;
+    return  calcularDescontoINSS(quaFaixa);
   }
 }
 
@@ -36,18 +35,16 @@ function calcularDescontoINSS (salario) {
 function imprimirElementos () {
 
   const salario_bruto = document.querySelector("#salario").value;
-  const tabela = document.querySelector('.resultados');
+  const box_resultados = document.querySelector('.resultados');
   
   if (salario_bruto >= 0) {
 
-    //reset do valor desconto total.
-    desconto_total = 0
+    desconto = calcularDescontoINSS(salario_bruto);
 
-    calcularDescontoINSS(salario_bruto)
-
-    tabela.innerHTML = `<div class="box-resultado"><p>Desconto total</p><p>R$ ${desconto_total.toFixed(2)}</p></div><div class="box-resultado"><p>Valor restante</p><p>R$ ${(salario_bruto - desconto_total).toFixed(2)}</p></div>`
+    box_resultados.innerHTML = `<div class="box-resultado"><p>Desconto total</p> <p>R$ ${desconto.toFixed(2)}</p></div>
+                                <div class="box-resultado"><p>Valor restante</p> <p>R$ ${(salario_bruto - desconto).toFixed(2)}</p></div>`
   } 
   else {
-    tabela.innerHTML = `<div class="box-alerta"><p>!</p><p>Insira um valor valido!</p></div>`
+    box_resultados.innerHTML = `<div class="box-alerta"><p>!</p><p>Insira um valor valido!</p></div>`
   }
 }
